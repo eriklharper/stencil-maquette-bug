@@ -9,6 +9,19 @@
     <script nomodule src="/build/stencil-starter-project-name.js"></script>
   </head>
   <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+    <script type="module">
+      import { h, createProjector } from "https://unpkg.com/maquette@3.3.7/dist/index.js";
+      document.addEventListener('DOMContentLoaded', function () {
+        const domNode = document.body;
+        const projector = createProjector();
+        const test = {
+          renderMaquette: function () {
+            return h("my-component", ["foo"])
+          }
+        };
+        projector.append(domNode, test.renderMaquette);
+        projector.scheduleRender();
+      });
+    </script>
   </body>
 </html>
