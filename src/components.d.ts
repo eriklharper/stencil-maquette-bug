@@ -6,10 +6,50 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface CalciteLabel {
+        /**
+          * specify the text alignment of the label
+         */
+        "alignment": string;
+        /**
+          * eliminates any space around the label
+         */
+        "disableSpacing"?: boolean;
+        /**
+          * is the label disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of the input associated with the label
+         */
+        "for": string;
+        /**
+          * is the wrapped element positioned inline with the label slotted text
+         */
+        "layout": "inline" | "inline-space-between" | "default";
+        /**
+          * specify the scale of the input, defaults to m
+         */
+        "scale": string;
+        /**
+          * specify the status of the label and any child input / input messages
+         */
+        "status": string;
+        /**
+          * specify theme of the label and its any child input / input messages
+         */
+        "theme": string;
+    }
     interface MyComponent {
     }
 }
 declare global {
+    interface HTMLCalciteLabelElement extends Components.CalciteLabel, HTMLStencilElement {
+    }
+    var HTMLCalciteLabelElement: {
+        prototype: HTMLCalciteLabelElement;
+        new (): HTMLCalciteLabelElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -17,13 +57,50 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "calcite-label": HTMLCalciteLabelElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface CalciteLabel {
+        /**
+          * specify the text alignment of the label
+         */
+        "alignment"?: string;
+        /**
+          * eliminates any space around the label
+         */
+        "disableSpacing"?: boolean;
+        /**
+          * is the label disabled
+         */
+        "disabled"?: boolean;
+        /**
+          * The id of the input associated with the label
+         */
+        "for"?: string;
+        /**
+          * is the wrapped element positioned inline with the label slotted text
+         */
+        "layout"?: "inline" | "inline-space-between" | "default";
+        "onCalciteLabelFocus"?: (event: CustomEvent<any>) => void;
+        /**
+          * specify the scale of the input, defaults to m
+         */
+        "scale"?: string;
+        /**
+          * specify the status of the label and any child input / input messages
+         */
+        "status"?: string;
+        /**
+          * specify theme of the label and its any child input / input messages
+         */
+        "theme"?: string;
+    }
     interface MyComponent {
     }
     interface IntrinsicElements {
+        "calcite-label": CalciteLabel;
         "my-component": MyComponent;
     }
 }
@@ -31,6 +108,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "calcite-label": LocalJSX.CalciteLabel & JSXBase.HTMLAttributes<HTMLCalciteLabelElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }

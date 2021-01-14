@@ -16,7 +16,10 @@
         const projector = createProjector();
         const test = {
           renderMaquette: function () {
-            return h("my-component", ["foo"])
+            return h("div", [
+              h("my-component", [h("span", ["my-component"])]),
+              h("calcite-label", ["calcite-label"]),
+            ])
           }
         };
         projector.append(domNode, test.renderMaquette);

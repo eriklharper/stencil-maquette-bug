@@ -7,6 +7,6 @@ import { Host, Component, h } from '@stencil/core';
 })
 export class MyComponent {
   render() {
-    return <Host><slot /></Host>;
+    return <Host><label><slot /></label></Host>;
   }
 }
