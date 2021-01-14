@@ -17,8 +17,8 @@
         const test = {
           renderMaquette: function () {
             return h("div", [
-              h("my-component", [h("span", ["my-component"])]),
-              h("calcite-label", ["calcite-label"]),
+              h("calcite-label", ["I am a text node and won't get properly relocated"]),
+              h("calcite-label", [h("span", ["I am a span and will get properly relocated"])]),
             ])
           }
         };
