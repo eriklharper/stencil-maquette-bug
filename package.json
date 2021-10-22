@@ -22,7 +22,7 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "@stencil/core": "2.4.0"
+    "@stencil/core": "2.9.0"
   },
   "license": "MIT"
 }
